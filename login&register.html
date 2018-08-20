@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {
+				box-sizing: border-box;
+			}
+			html {
+				font-family: "微软雅黑";
+			}
+			a {
+				text-decoration: none;
+				color: #666;
+			}
+			.btn {
+				padding: 10px;
+				border-radius: 10px;
+				background-color: #FFD700;
+				color: #fff;
+			}
+			input {
+				width: 300px;
+				height: 40px;
+				border-radius: 10px;
+				border: 1px solid #e3e3e3;
+				outline: none;
+				text-indent: 10px;
+				font-size: 16px;
+			}
+			input:focus {
+				border: 1px solid gold;
+				box-shadow: 0px 0px 10px gold inset;
+			}
+			body {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			.box {
+				padding: 50px;
+				border: 1px solid gold;
+			}
+			.tab {
+				padding-bottom: 20px;
+				border-bottom: 1px solid #e5e5e5;
+				text-align: center;
+			}
+			.tab > a {
+				padding: 5px 10px;
+				font-size: 24px;
+				background-color: #e5e5e5;
+			}
+			.tab > a.active, .tab > a:active {
+				color: #fff;
+				background-color: gold;
+			}
+			.tab > a[data-box=".login"] {
+				border-top-left-radius: 10px;
+				border-bottom-left-radius: 10px;
+			}
+			.tab > a[data-box=".register"] {
+				border-top-right-radius: 10px;
+				border-bottom-right-radius: 10px;
+			}
+			.tab-box {
+
+			}
+			.register {
+				display: none;
+			}
+			.tab-box > div > div {
+				margin-top: 20px;
+				text-align: center;
+			}
+			.tab-box > div > div span {
+				display: inline-block;
+				width: 90px;
+				text-align: right;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div class="tab">
+				<a href="javascript:void(0);" data-box=".login" class="active">登录</a>
+				<a href="javascript:void(0);" data-box=".register">注册</a>
+			</div>
+			<div class="tab-box">
+				<div class="login">
+					<div>
+						<span>用户名：</span>
+						<input data-verify="user" type="text" />
+					</div>
+					<div>
+						<span>密码：</span>
+						<input data-verify="pwd" type="password" />
+					</div>
+					<div>
+						<a href="javascript:void(0);" class="btn">登录</a>
+					</div>
+				</div>
+				<div class="register">
+					<div>
+						<span>用户名：</span>
+						<input data-verify="user" type="text" />
+					</div>
+					<div>
+						<span>密码：</span>
+						<input data-verify="pwd" type="password" />
+					</div>
+					<div>
+						<span>确认密码：</span>
+						<input type="password" />
+					</div>
+					<div>
+						<a href="javascript:void(0);" class="btn">注册</a>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<script src="js/jquery-1.8.3.min.js"></script>
+		<script src="js/login&register.js"></script>
+		<script>
+			$(function(){
+				$("body").on('click', '.tab > a', function(){
+					var $this = $(this);
+					$this.addClass('active').siblings().removeClass('active');
+					$(".tab-box").find($($this.attr('data-box'))).show().siblings().hide();
+				});
+			});
+		</script>
+	</body>
+</html>
